@@ -15,7 +15,7 @@ public:
 	FoncteurEgal(T* t)
 		: t_(t) {};
 	bool operator()(pair <int, T*> pairEgal) {
-		if (pairEgal.first == pairEgal.second)
+		if (pairEgal.second == t_)
 			return true
 		else
 			return false
@@ -42,20 +42,25 @@ public:
 	FoncteurDiminuerPourcent(int pourcentage) :pourcentage_(pourcentage) {};
 	void operator()(pair<int, Produit*> reductionPair) {
 		double prixReduit = reductionPair.second->Produit::obtenirPrix()
-			+ reductionPair.first / 100 * reductionPair.second->Produit::obtenirPrix();
+			+ pourcentage_* reductionPair.second->Produit::obtenirPrix()/100;
 		reductionPair.second->modifierPrix(prixReduit);
 	};
 private:
 	int pourcentage_;
 };
-/*
-Attributs :
-- pourcentage_;
-Méthodes :
-- operator(); Calule le nouveau prix du Produit de la pair passé en paramètre et le modifie
-*/
 
 // TODO : Créer le FoncteurIntervalle
+class FoncteurIntervalle {
+public:
+	FoncteurIntervalle(double borneInf, double borneSup) 
+		: borneInf_(borneInf), borneSup_(borneSup){};
+	bool operator()(pair<int, Produit*> prixCompIntervalle) {
+		
+	};
+private:
+	double borneInf_;
+	double borneSup_;
+};
 /*
 Attributs :
 - borneInf_;
