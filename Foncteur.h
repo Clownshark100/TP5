@@ -13,7 +13,7 @@ class FoncteurEgal {
 public:
 	FoncteurEgal(T* t)
 		: t_(t) {};
-	bool operator(pair <int, T*> pairEgal) {
+	bool operator()(pair <int, T*> pairEgal) {
 		if (pairEgal.first == pairEgal->second)
 			return true
 		else
@@ -24,6 +24,10 @@ private:
 };
 
 // TODO : Créer le FoncteurGenerateurId
+class FoncteurGenerateurId {
+public:
+	operator
+};
 /*
 Attributs :
 - id_;
