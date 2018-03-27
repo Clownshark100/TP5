@@ -55,19 +55,13 @@ public:
 	FoncteurIntervalle(double borneInf, double borneSup) 
 		: borneInf_(borneInf), borneSup_(borneSup){};
 	bool operator()(pair<int, Produit*> prixCompIntervalle) {
-		
+		return (prixCompIntervalle.second->Produit::obtenirPrix() >= borneInf_
+			&& prixCompIntervalle.second->Produit::obtenirPrix() <= borneSup_);
 	};
 private:
 	double borneInf_;
 	double borneSup_;
 };
-/*
-Attributs :
-- borneInf_;
-- borneSup_;
-Méthodes :
-- operator(); Vérifie que le Produit associé à la pair passé en paramètre est compris entre les bornes borneInf_ et borneSup_ (retourne un booléen)
-*/
 
 // TODO : Créer le Foncteur AjouterProduit
 /*
