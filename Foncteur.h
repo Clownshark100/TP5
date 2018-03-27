@@ -6,6 +6,7 @@
 
 #pragma once
 #include <utility>
+#include "Produit.h"
 using namespace std;
 // TODO : Créer le FoncteurEgal
 template< typename T >
@@ -14,7 +15,7 @@ public:
 	FoncteurEgal(T* t)
 		: t_(t) {};
 	bool operator()(pair <int, T*> pairEgal) {
-		if (pairEgal.first == pairEgal->second)
+		if (pairEgal.first == pairEgal.second)
 			return true
 		else
 			return false
@@ -36,6 +37,17 @@ private:
 
 
 // TODO : Créer le FoncteurDiminuerPourcent
+class FoncteurDiminuerPourcent {
+public:
+	FoncteurDiminuerPourcent(int pourcentage) :pourcentage_(pourcentage) {};
+	void operator()(pair<int, Produit*> reductionPair) {
+		double prixReduit = reductionPair.second->obtenirPrix()
+			+ reductionPair.first / 100 * reductionPair.second->obtenirPrix();
+		reductionPair.second->modifierPrix(prixReduit);
+	};
+private:
+	int pourcentage_;
+};
 /*
 Attributs :
 - pourcentage_;
