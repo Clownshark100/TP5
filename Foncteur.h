@@ -26,14 +26,14 @@ private:
 // TODO : Créer le FoncteurGenerateurId
 class FoncteurGenerateurId {
 public:
-	operator
+	FoncteurGenerateurId() : id_(0) {};
+	void operator()() {
+		id_++;
+	};
+private:
+	int id_;
 };
-/*
-Attributs :
-- id_;
-Méthodes :
-- operator(); Incrémenter id_ à chaque appel
-*/
+
 
 // TODO : Créer le FoncteurDiminuerPourcent
 /*
