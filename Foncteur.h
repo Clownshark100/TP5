@@ -5,8 +5,23 @@
 *******************************************/
 
 #pragma once
-
+#include <utility>
+using namespace std;
 // TODO : Créer le FoncteurEgal
+template< typename T >
+class FoncteurEgal {
+public:
+	FoncteurEgal(T* t)
+		: t_(t) {};
+	bool operator(pair <int, T*> pairEgal) {
+		if (pairEgal.first == pairEgal->second)
+			return true
+		else
+			return false
+	};
+private:
+	T* t_;
+};
 
 // TODO : Créer le FoncteurGenerateurId
 /*
