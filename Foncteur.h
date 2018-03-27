@@ -41,8 +41,8 @@ class FoncteurDiminuerPourcent {
 public:
 	FoncteurDiminuerPourcent(int pourcentage) :pourcentage_(pourcentage) {};
 	void operator()(pair<int, Produit*> reductionPair) {
-		double prixReduit = reductionPair.second->obtenirPrix()
-			+ reductionPair.first / 100 * reductionPair.second->obtenirPrix();
+		double prixReduit = reductionPair.second->Produit::obtenirPrix()
+			+ reductionPair.first / 100 * reductionPair.second->Produit::obtenirPrix();
 		reductionPair.second->modifierPrix(prixReduit);
 	};
 private:
