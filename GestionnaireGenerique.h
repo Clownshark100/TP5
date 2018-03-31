@@ -12,6 +12,7 @@ template <typename A,typename C,typename T,typename S>
 class GestionnaireGenerique{
 public:
 	void ajouter(T* t) {
+		
 	};
 protected:
 	C* conteneur_;

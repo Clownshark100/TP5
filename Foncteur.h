@@ -7,6 +7,9 @@
 #pragma once
 #include <utility>
 #include "Produit.h"
+#include <map>
+#include<algorithm>
+#include<set>
 using namespace std;
 // TODO : Créer le FoncteurEgal
 template< typename T >
@@ -64,27 +67,49 @@ private:
 };
 
 // TODO : Créer le Foncteur AjouterProduit
-/*
-Attributs :
-- &multimap_;
-Méthodes :
-- operator(); Ajoute dans la multimap la pair passé par paramètre et retourne la multimap_;
-*/
+class AjouterProduit {
+public:
+	multimap<int, Produit*>& operator()(pair<int,Produit*> produit) {
+		multimap_.insert(produit);
+		return multimap_ ;
+	};
+private:
+	multimap<int, Produit*>& multimap_;
+};
 
 // TODO : Créer le Foncteur SupprimerProduit
-/*
-Attributs :
-- &multimap_;
-Méthodes :
-- operator(); Utilise la fonction find_if avec le FoncteurEgal. Si le Produit existe,
-				on supprime le Produit et on retourne la multimap_,
-				sinon on retourne juste la multimap_ sans supprimer l'élément.
-*/
+template< typename T >
+class SupprimerProduit {
+public:
+	multimap<int, Produit*>& operator()(pair<int, Produit*> produit) {
+		auto it = find_if(multimap_.begin(), multimap_.end(), FoncteurEgal(produit));
+		multimap_.erase(*it);
+		return multimap_;
+	};
+private:
+	multimap<int, Produit*>& multimap_;
+};
 
 //TODO : Créer le Foncteur AjouterUsager
-/*
-Attributs :
-- &set;
-Méthodes :
-- operateur(); Trouve l'Usager dans le set_, s'il existe on le supprime et on retourne le set_, sinon on retourne juste directement le set_.
-*/
+class AjouterUsager {
+public:
+	set<Usager*>& operator()(Usager* usager) {
+		set_.insert(usager);
+		return set_;
+	};
+private:
+	set<Usager*>& set_;
+};
+//Foncteur SupprimerUsager
+template< typename T >
+class SupprimerUsager {
+public:
+	set<Usager*>& operator()(Usager* usager) {
+		auto it = find_if(set_.begin(), set_.end(), FoncteurEgal(usager));
+		set_.erase(*it);
+		return set_;
+	};
+private:
+	set<Usager*>& set_;
+};
+
