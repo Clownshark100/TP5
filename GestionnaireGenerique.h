@@ -8,19 +8,21 @@
 #pragma once
 
 // TODO : Créer la classe GestionnaireGenerique
-template <typename A,typename C,typename T,typename S>
+template <typename A,typename C,typename T,typename S, typename Predicate>
 class GestionnaireGenerique{
 public:
+	C* obtenirConteneur() {
+		return conteneur_;
+	};
 	void ajouter(T* t) {
-		
+		 A(t);
+	};
+	void supprime(T* t) {
+		 S(t);
+	};
+	void pourChaqueElement(Predicate* predicate) {
+		for_each(conteneur_.begin(), conteneur_.end(), predicate);
 	};
 protected:
 	C* conteneur_;
 };
-// TODO : Méthodes :
-/*
-- ajouter()
-- supprime()
-- obtenirConteneur()
-- pourChaqueElement()
-*/
