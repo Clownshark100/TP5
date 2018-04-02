@@ -8,8 +8,8 @@
 #pragma once
 
 // TODO : Créer la classe GestionnaireGenerique
-template <typename A,typename C,typename T,typename S, typename Predicate>
-class GestionnaireGenerique{
+template <typename A,typename C,typename T,typename S>
+class GestionnaireGenerique {
 public:
 	C* obtenirConteneur() {
 		return conteneur_;
@@ -20,6 +20,7 @@ public:
 	void supprime(T* t) {
 		 S(t);
 	};
+	template <typename Predicate>
 	void pourChaqueElement(Predicate* predicate) {
 		for_each(conteneur_.begin(), conteneur_.end(), predicate);
 	};

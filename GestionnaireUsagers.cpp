@@ -5,3 +5,11 @@
 *******************************************/
 
 #include "GestionnaireUsagers.h"
+double GestionnaireUsager::obtenirChiffreAffaires() const {
+	double chiffreAffaires = 0;
+	for_each(conteneur_->begin(), conteneur_->end(), [&chiffreAffaires](Usager* usager) {chiffreAffaires += usager->obtenirTotalAPayer(); });
+	return chiffreAffaires;
+}
+void GestionnaireUsager::encherir(Client* client, ProduitAuxEncheres *produit, double montant) const {
+
+}

@@ -31,6 +31,7 @@ class Usager
     string nom_;
     string prenom_;
     int reference_;
+	int identifiant_;
     string codePostal_;
 };
 
