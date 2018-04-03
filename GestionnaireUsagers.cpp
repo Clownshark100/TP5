@@ -11,5 +11,15 @@ double GestionnaireUsager::obtenirChiffreAffaires() const {
 	return chiffreAffaires;
 }
 void GestionnaireUsager::encherir(Client* client, ProduitAuxEncheres *produit, double montant) const {
-
+	if (produit->obtenirPrix() < montant)
+		produit->mettreAJourEnchere(client, montant);
 }
+
+void GestionnaireUsager::reinitialiser(){
+	for_each(conteneur_->begin(), conteneur_->end(), [](Usager* usager) {usager->reinitialiser(); });
+}
+
+void GestionnaireUsager::afficherProfils() const {
+	for_each(conteneur_->begin(), conteneur_->end(), [](Usager* usager) {usager->afficher(); cout << endl; });
+}
+
