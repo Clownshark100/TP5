@@ -5,6 +5,7 @@
 #include <vector>
 #include "Usager.h"
 #include "Produit.h"
+#include "GestionnaireProduits.h"
 
 using namespace std;
 
@@ -30,7 +31,7 @@ class Client : public Usager
 	Produit* trouverProduitPlusCher() const;
   
   protected:
-    vector<Produit *> panier_;
+    GestionnaireProduits* panier_;
 
   private:
     unsigned int codeClient_;
