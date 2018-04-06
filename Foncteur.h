@@ -8,6 +8,7 @@
 #include <utility>
 #include "Produit.h"
 #include <map>
+#include "Usager.h"
 #include<algorithm>
 #include<set>
 using namespace std;
@@ -19,9 +20,9 @@ public:
 		: t_(t) {};
 	bool operator()(pair <int, T*> pairEgal) {
 		if (pairEgal.second == t_)
-			return true
+			return true;
 		else
-			return false
+			return false;
 	};
 private:
 	T* t_;
@@ -31,8 +32,8 @@ private:
 class FoncteurGenerateurId {
 public:
 	FoncteurGenerateurId() : id_(0) {};
-	void operator()() {
-		id_++;
+	int operator()() {
+		return id_++;
 	};
 private:
 	int id_;
@@ -69,6 +70,7 @@ private:
 // TODO : Créer le Foncteur AjouterProduit
 class AjouterProduit {
 public:
+	AjouterProduit(multimap<int, Produit*>& multimap):multimap_(multimap) {};
 	multimap<int, Produit*>& operator()(pair<int,Produit*> produit) {
 		multimap_.insert(produit);
 		return multimap_ ;
@@ -78,12 +80,12 @@ private:
 };
 
 // TODO : Créer le Foncteur SupprimerProduit
-template< typename T >
 class SupprimerProduit {
 public:
-	multimap<int, Produit*>& operator()(pair<int, Produit*> produit) {
-		auto it = find_if(multimap_.begin(), multimap_.end(), FoncteurEgal(produit));
-		multimap_.erase(*it);
+	SupprimerProduit(multimap<int, Produit*>& multimap) : multimap_(multimap) {};
+	multimap<int, Produit*>& operator()(Produit* produit) {
+		auto it = find_if(multimap_.begin(), multimap_.end(), FoncteurEgal<Produit>(produit));
+		multimap_.erase(it);
 		return multimap_;
 	};
 private:
@@ -93,6 +95,7 @@ private:
 //TODO : Créer le Foncteur AjouterUsager
 class AjouterUsager {
 public:
+	AjouterUsager(set<Usager*>& set) :set_(set) {};
 	set<Usager*>& operator()(Usager* usager) {
 		set_.insert(usager);
 		return set_;
@@ -104,6 +107,7 @@ private:
 template< typename T >
 class SupprimerUsager {
 public:
+	SupprimerUsager(set<Usager*>& set) :set_(set) {};
 	set<Usager*>& operator()(Usager* usager) {
 		auto it = find_if(set_.begin(), set_.end(), FoncteurEgal(usager));
 		set_.erase(*it);

@@ -11,7 +11,7 @@ using namespace std;
 class Gestionnaire
 {
   public:
-    vector<Usager *> obtenirUsagers() const;
+    vector<Usager*> obtenirUsagers() const;
     void afficherLesProfils() const;
     double obtenirChiffreAffaires() const;
 
