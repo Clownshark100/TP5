@@ -18,11 +18,11 @@ class Client : public Usager
     unsigned int obtenirCodeClient() const;
 	void modifierCodeClient(unsigned int codeClient);
 	// TODO : Modifier ses méthodes : -------------------
-    vector<Produit *> obtenirPanier() const;
+    GestionnaireProduits* obtenirPanier() const;
     virtual double obtenirTotalAPayer() const;
     void afficherPanier() const;
     virtual void afficher() const;
-    virtual void enleverProduit(Produit *produit);
+    virtual void enleverProduit(Produit* produit);
     virtual void ajouterProduit(Produit *produit);
     virtual void reinitialiser();
 	// --------------------------------------------------

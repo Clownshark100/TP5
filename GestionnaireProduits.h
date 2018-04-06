@@ -9,18 +9,24 @@
 #include "GestionnaireGenerique.h"
 #include <iostream>
 #include <functional>
+#include "Foncteur.h"
+#include <vector>
+#include "ProduitAuxEncheres.h"
 using namespace std;
 
 // TODO : Créer la classe GestionnaireProduits
-class GestionnaireProduits : GestionnaireGenerique<AjouterProduit,multimap<int, Produit*>, Produit*, SupprimerProduit<Produit*>> {
+class GestionnaireProduits : 
+	public GestionnaireGenerique <AjouterProduit, multimap<int, Produit*>, Produit, SupprimerProduit> {
 public:
+	GestionnaireProduits();
+	~GestionnaireProduits();
 	void reinitialiserClient();
 	void reinitialiserFournisseur();
 	void afficher();
 	double obtenirTotalAPayer();
 	double obtenirTotalApayerPremium();
 	Produit* trouverProduitPlusCher();
-	vector<pair<int,Produit*>>obtenirProduitsEntre(double borne_Sup, double borne_Inf);
+	vector<pair<int,Produit*>> obtenirProduitsEntre(double borne_Sup, double borne_Inf);
 	Produit* obtenirProduitSuivant(Produit* produit);
 
 };

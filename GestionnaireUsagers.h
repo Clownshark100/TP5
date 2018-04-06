@@ -5,7 +5,9 @@
 *******************************************/
 
 #pragma once
-
+#include "ProduitAuxEncheres.h"
+#include "Client.h"
+#include "Foncteur.h"
 #include "GestionnaireGenerique.h"
 
 // TODO : Créer la classe GestionnaireUsager

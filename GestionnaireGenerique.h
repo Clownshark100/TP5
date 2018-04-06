@@ -3,8 +3,6 @@
 * Date: 9 mars 2018
 * Auteur: Ryan Hardie
 *******************************************/
-#include "Gestionnaire.h"
-#include "Foncteur.h"
 #pragma once
 
 // TODO : Créer la classe GestionnaireGenerique
@@ -20,10 +18,7 @@ public:
 	void supprime(T* t) {
 		 S(t);
 	};
-	template <typename Predicate>
-	void pourChaqueElement(Predicate* predicate) {
-		for_each(conteneur_.begin(), conteneur_.end(), predicate);
-	};
+	//TODO: implement forEachElement
 protected:
 	C* conteneur_;
 };
