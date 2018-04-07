@@ -27,7 +27,7 @@ class Client : public Usager
 	// --------------------------------------------------
 
 	// TODO : Implémenter cette méthodes : 
-	Produit* trouverProduitPlusCher() const;
+	Produit* trouverProduitPlusCher() const;  
   
   protected:
     vector<Produit *> panier_;
