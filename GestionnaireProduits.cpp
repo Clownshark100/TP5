@@ -62,7 +62,7 @@ vector<pair<int, Produit*>> GestionnaireProduits::obtenirProduitsEntre(double bo
 }
 
 Produit* GestionnaireProduits::obtenirProduitSuivant(Produit * produit) {
-	auto it = find_if(conteneur_.begin(), conteneur_.end(),
-		bind(greater<int>(),_1,produit->obtenirReference()));
-	return it->second;
+	//auto it = find_if(conteneur_.begin(), conteneur_.end(),
+		//bind(greater<int>(),_1,produit->obtenirReference()));
+	return produit;
 }
