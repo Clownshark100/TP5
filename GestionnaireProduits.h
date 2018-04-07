@@ -11,6 +11,8 @@
 #include "GestionnaireGenerique.h"
 #include "Produit.h"
 #include "Foncteur.h"
+#include <iterator>
+#include <functional>
 
 
 // TODO : Créer la classe GestionnaireProduits
@@ -32,8 +34,7 @@ class GestionnaireProduits
 	
 	
 	public:
-	GestionnaireProduits();
-	~GestionnaireProduits();
+
 	void reinitialiserClient();
 	void reinitialiserFournisseur();
 	void afficher();
