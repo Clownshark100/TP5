@@ -14,7 +14,7 @@ class Client : public Usager
   public:
     Client(unsigned int codeClient = 0);
     Client(const string &nom, const string &prenom, int identifiant, const string &codePostal, unsigned int codeClient = 0);
-
+	~Client();
     unsigned int obtenirCodeClient() const;
 	void modifierCodeClient(unsigned int codeClient);
 	// TODO : Modifier ses méthodes : -------------------
@@ -27,7 +27,6 @@ class Client : public Usager
     virtual void reinitialiser();
 	// --------------------------------------------------
 
-	// TODO : Implémenter cette méthodes : 
 	Produit* trouverProduitPlusCher() const;  
   
   protected:

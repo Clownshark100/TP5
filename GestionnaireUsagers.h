@@ -10,6 +10,8 @@
 #include "Usager.h"
 #include <set>
 #include "Foncteur.h"
+#include "Client.h"
+#include "ProduitAuxEncheres.h"
 
 
 // TODO : Créer la classe GestionnaireUsager

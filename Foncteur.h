@@ -14,7 +14,7 @@
 using namespace std;
 
 template< typename T >
-class FoncteurEgal {
+class FoncteurEgal : std::unary_function<const pair<int, T*>, bool> {
 public:
 	FoncteurEgal(T* t)
 		: t_(t) {};
@@ -67,8 +67,11 @@ private:
 class AjouterProduit {
 public:
 	AjouterProduit(multimap<int, Produit*>& multimap):multimap_(multimap) {};
-	multimap<int, Produit*>& operator()(pair<int,Produit*> produit) {
-		multimap_.insert(produit);
+	multimap<int, Produit*>& operator()(Produit* produit) {
+		pair<int, Produit*> produitAjout;
+		produitAjout.first = produit->obtenirReference();
+		produitAjout.second = produit;
+		multimap_.insert(produitAjout);
 		return multimap_ ;
 	};
 private:
@@ -103,8 +106,7 @@ class SupprimerUsager {
 public:
 	SupprimerUsager(set<Usager*>& set) :set_(set) {};
 	set<Usager*>& operator()(Usager* usager) {
-		
-		auto it = find_if(set_.begin(), set_.end(), FoncteurEgal<Usager>(usager));
+		auto it = find_if(set_.begin(), set_.end(), [usager](Usager* usagerSet) {return usagerSet == usager; });
 		set_.erase(*it);
 		return set_;
 	};
