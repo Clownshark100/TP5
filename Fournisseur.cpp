@@ -2,18 +2,18 @@
 #include <iostream>
 
 Fournisseur::Fournisseur()
-    : Usager()
+    : Usager(),catalogue_(new GestionnaireProduits)
 {
 }
 
 Fournisseur::Fournisseur(const string &nom, const string &prenom, int identifiant,
                          const string &codePostal)
-    : Usager(nom, prenom, identifiant, codePostal)
+    : Usager(nom, prenom, identifiant, codePostal), catalogue_(new GestionnaireProduits)
 {
 	// TODO : À modifier
 }
 
-vector<Produit *> Fournisseur::obtenirCatalogue() const
+GestionnaireProduits* Fournisseur::obtenirCatalogue() const
 {
 	// TODO : À modifier
     return catalogue_;

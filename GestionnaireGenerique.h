@@ -14,10 +14,14 @@ class GestionnaireGenerique{
 
 public:
 
-	void ajouter(const T* const ajout);
-	void supprimer(const T* const aSupprimer);
+	void ajouter(const T ajout);
+	void supprimer(const T aSupprimer);
 	
 	template<class Predicate> void pourChaqueElement(Predicate& fun);
+	
+	C& obtenirConteneur(){
+		return conteneur_;
+	}
 	
 protected:
 	
@@ -26,14 +30,14 @@ protected:
 };
 
 template <class T, class C, class A, class S>
-void GestionnaireGenerique<T, C, A, S>::ajouter(const T* const ajout){
-	A foncteurAjout(&conteneur_);
+void GestionnaireGenerique<T, C, A, S>::ajouter(const T ajout){
+	A foncteurAjout(conteneur_);
 	foncteurAjout(ajout);
 }
 
 template <class T, class C, class A, class S>
-void GestionnaireGenerique<T,C,A,S>::supprimer(const T* const aSupprimer){
-	S foncteurSuppression(&conteneur_);
+void GestionnaireGenerique<T,C,A,S>::supprimer(const T aSupprimer){
+	S foncteurSuppression(conteneur_);
 	foncteurSuppression(aSupprimer);
 }
 

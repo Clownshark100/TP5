@@ -5,56 +5,109 @@
 *******************************************/
 
 #pragma once
+#include <utility>
+#include "Produit.h"
+#include <map>
+#include "Usager.h"
+#include<algorithm>
+#include<set>
+using namespace std;
 
-// TODO : Créer le FoncteurEgal
+template< typename T >
+class FoncteurEgal {
+public:
+	FoncteurEgal(T* t)
+		: t_(t) {};
+	bool operator()(pair <int,T*> pairEgal) {
+		if (pairEgal.second == t_)
+			return true;
+		else
+			return false;
+	};
+private:
+	T* t_;
+};
 
-// TODO : Créer le FoncteurGenerateurId
-/*
-Attributs :
-- id_;
-Méthodes :
-- operator(); Incrémenter id_ à chaque appel
-*/
+class FoncteurGenerateurId {
+public:
+	FoncteurGenerateurId() : id_(0) {};
+	int operator()() {
+		return id_++;
+	};
+private:
+	int id_;
+};
 
-// TODO : Créer le FoncteurDiminuerPourcent
-/*
-Attributs :
-- pourcentage_;
-Méthodes :
-- operator(); Calule le nouveau prix du Produit de la pair passé en paramètre et le modifie
-*/
 
-// TODO : Créer le FoncteurIntervalle
-/*
-Attributs :
-- borneInf_;
-- borneSup_;
-Méthodes :
-- operator(); Vérifie que le Produit associé à la pair passé en paramètre est compris entre les bornes borneInf_ et borneSup_ (retourne un booléen)
-*/
+class FoncteurDiminuerPourcent {
+public:
+	FoncteurDiminuerPourcent(int pourcentage) :pourcentage_(pourcentage) {};
+	void operator()(pair<int, Produit*> reductionPair) {
+		double prixReduit = reductionPair.second->Produit::obtenirPrix()
+			- pourcentage_* reductionPair.second->Produit::obtenirPrix()/100;
+		reductionPair.second->modifierPrix(prixReduit);
+	};
+private:
+	int pourcentage_;
+};
 
-// TODO : Créer le Foncteur AjouterProduit
-/*
-Attributs :
-- &multimap_;
-Méthodes :
-- operator(); Ajoute dans la multimap la pair passé par paramètre et retourne la multimap_;
-*/
+class FoncteurIntervalle {
+public:
+	FoncteurIntervalle(double borneInf, double borneSup) 
+		: borneInf_(borneInf), borneSup_(borneSup){};
+	bool operator()(pair<int, Produit*> prixCompIntervalle) {
+		return (prixCompIntervalle.second->Produit::obtenirPrix() >= borneInf_
+			&& prixCompIntervalle.second->Produit::obtenirPrix() <= borneSup_);
+	};
+private:
+	double borneInf_;
+	double borneSup_;
+};
 
-// TODO : Créer le Foncteur SupprimerProduit
-/*
-Attributs :
-- &multimap_;
-Méthodes :
-- operator(); Utilise la fonction find_if avec le FoncteurEgal. Si le Produit existe,
-				on supprime le Produit et on retourne la multimap_,
-				sinon on retourne juste la multimap_ sans supprimer l'élément.
-*/
+class AjouterProduit {
+public:
+	AjouterProduit(multimap<int, Produit*>& multimap):multimap_(multimap) {};
+	multimap<int, Produit*>& operator()(pair<int,Produit*> produit) {
+		multimap_.insert(produit);
+		return multimap_ ;
+	};
+private:
+	multimap<int, Produit*>& multimap_;
+};
 
-//TODO : Créer le Foncteur AjouterUsager
-/*
-Attributs :
-- &set;
-Méthodes :
-- operateur(); Trouve l'Usager dans le set_, s'il existe on le supprime et on retourne le set_, sinon on retourne juste directement le set_.
-*/
+class SupprimerProduit {
+public:
+	SupprimerProduit(multimap<int, Produit*>& multimap) : multimap_(multimap) {};
+	multimap<int, Produit*>& operator()(Produit* produit) {
+		auto it = find_if(multimap_.begin(), multimap_.end(), FoncteurEgal<Produit>(produit));
+		multimap_.erase(it);
+		return multimap_;
+	};
+private:
+	multimap<int, Produit*>& multimap_;
+};
+
+
+class AjouterUsager {
+public:
+	AjouterUsager(set<Usager*>& set) :set_(set) {};
+	set<Usager*>& operator()(Usager* usager) {
+		set_.insert(usager);
+		return set_;
+	};
+private:
+	set<Usager*>& set_;
+};
+
+class SupprimerUsager {
+public:
+	SupprimerUsager(set<Usager*>& set) :set_(set) {};
+	set<Usager*>& operator()(Usager* usager) {
+		
+		auto it = find_if(set_.begin(), set_.end(), FoncteurEgal<Usager>(usager));
+		set_.erase(*it);
+		return set_;
+	};
+private:
+	set<Usager*>& set_;
+};

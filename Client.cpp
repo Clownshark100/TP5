@@ -2,9 +2,10 @@
 #include "ProduitAuxEncheres.h"
 #include <iostream>
 
+
 Client::Client(unsigned int codeClient)
     : Usager(),
-      codeClient_(codeClient)
+      codeClient_(codeClient), panier_(new GestionnaireProduits)
 {
 	// TODO : À modifier
 }
@@ -12,7 +13,7 @@ Client::Client(unsigned int codeClient)
 Client::Client(const string &nom, const string &prenom, int identifiant,
                const string &codePostal, unsigned int codeClient)
     : Usager(nom, prenom, identifiant, codePostal),
-      codeClient_(codeClient)
+      codeClient_(codeClient), panier_(new GestionnaireProduits)
 {
 	// TODO : À modifier
 }
@@ -22,9 +23,8 @@ unsigned int Client::obtenirCodeClient() const
     return codeClient_;
 }
 
-vector<Produit *> Client::obtenirPanier() const
+GestionnaireProduits* Client::obtenirPanier() const
 {
-	// TODO : À modifier
     return panier_;
 }
 

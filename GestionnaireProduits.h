@@ -6,7 +6,12 @@
 
 #pragma once
 
+#include <map>
+#include <vector>
 #include "GestionnaireGenerique.h"
+#include "Produit.h"
+#include "Foncteur.h"
+
 
 // TODO : Créer la classe GestionnaireProduits
 
@@ -21,3 +26,21 @@
 - obtenirProduitsEntre();
 - obtenirProduitSuivant();
 */
+
+class GestionnaireProduits 
+	: public GestionnaireGenerique<Produit*, multimap<int, Produit*>, AjouterProduit, SupprimerProduit>{
+	
+	
+	public:
+	GestionnaireProduits();
+	~GestionnaireProduits();
+	void reinitialiserClient();
+	void reinitialiserFournisseur();
+	void afficher();
+	double obtenirTotalAPayer();
+	double obtenirTotalApayerPremium();
+	Produit* trouverProduitPlusCher();
+	vector<pair<int,Produit*>> obtenirProduitsEntre(double borne_Sup, double borne_Inf);
+	Produit* obtenirProduitSuivant(Produit* produit);
+	
+};

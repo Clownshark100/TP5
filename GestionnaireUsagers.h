@@ -7,6 +7,10 @@
 #pragma once
 
 #include "GestionnaireGenerique.h"
+#include "Usager.h"
+#include <set>
+#include "Foncteur.h"
+
 
 // TODO : Créer la classe GestionnaireUsager
 
@@ -18,3 +22,13 @@ Les méthodes retrouvées de la classe Gestionnaire sont :
 - void reinitialiser();
 - void afficherProfils() const;
 */
+
+class GestionnaireUsagers : public GestionnaireGenerique<Usager*,set<Usager*>, AjouterUsager, SupprimerUsager> {
+
+public:
+	double obtenirChiffreAffaires() const;
+	void encherir(Client *client, ProduitAuxEncheres *produit, double montant) const;
+	void reinitialiser();
+	void afficherProfils() const;
+	
+};
