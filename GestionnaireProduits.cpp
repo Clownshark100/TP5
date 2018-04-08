@@ -6,6 +6,7 @@
 
 #include "GestionnaireProduits.h"
 #include "ProduitAuxEncheres.h"
+
 using namespace placeholders;
 void GestionnaireProduits::reinitialiserClient() {
 	for (auto it = conteneur_.begin(); it != conteneur_.end(); it++) {
@@ -55,14 +56,14 @@ Produit * GestionnaireProduits::trouverProduitPlusCher() {
 	 return it->second;
 }
 
-vector<pair<int, Produit*>> GestionnaireProduits::obtenirProduitsEntre(double borne_Sup, double borne_Inf) {
+vector<pair<int, Produit*>> GestionnaireProduits::obtenirProduitsEntre(double borne_Inf, double borne_Sups) {
 	vector<pair<int, Produit*>> produitsEntre;
-	copy_if(conteneur_.begin(), conteneur_.end(), back_inserter(produitsEntre), FoncteurIntervalle(borne_Inf, borne_Sup));
+	copy_if(conteneur_.begin(), conteneur_.end(), back_inserter(produitsEntre), FoncteurIntervalle(borne_Inf, borne_Sups));
 	return produitsEntre;
 }
 
 Produit* GestionnaireProduits::obtenirProduitSuivant(Produit * produit) {
-	//auto it = find_if(conteneur_.begin(), conteneur_.end(),
-		//bind(greater<int>(),_1,produit->obtenirReference()));
-	return produit;
+	auto greaterInt = greater<int>();
+	auto it = find_if(conteneur_.begin(), conteneur_.end(),bind(greater<pair<int,Produit*>>(), _1, pair<int,Produit*>(produit->obtenirReference(), produit)));
+	return it->second;
 }
