@@ -83,7 +83,10 @@ public:
 	SupprimerProduit(multimap<int, Produit*>& multimap) : multimap_(multimap) {};
 	multimap<int, Produit*>& operator()(Produit* produit) {
 		auto it = find_if(multimap_.begin(), multimap_.end(), FoncteurEgal<Produit>(produit));
-		multimap_.erase(it);
+		
+		if(it != multimap_.end()){
+			multimap_.erase(it);
+		}
 		return multimap_;
 	};
 private:
