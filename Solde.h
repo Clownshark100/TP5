@@ -1,3 +1,12 @@
+/********************************************
+* Titre: Travail pratique #5 - Solde.h
+* Date: 9 mars 2018
+* Auteur: Loic LeBlanc et Daniel Nahum
+* 
+* Un solde represente un pourcentage de rabais.
+* 
+*******************************************/
+
 #ifndef SOLDE_H
 #define SOLDE_H
 

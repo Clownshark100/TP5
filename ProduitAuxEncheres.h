@@ -1,3 +1,15 @@
+/********************************************
+* Titre: Travail pratique #5 - ProduitAuxEncheres.h
+* Date: 9 mars 2018
+* Auteur: Loic LeBlanc et Daniel Nahum
+* 
+* Un Produit aux encheres est un produit ayant les
+* fonctionalités necéssaires pour être mit aux enchères.
+* Soit il possède un attribut enchérisseur, prix initial
+* et prix présent.
+* 
+*******************************************/
+
 #ifndef PRODUIT_AUX_ENCHERES_H
 #define PRODUIT_AUX_ENCHERES_H
 

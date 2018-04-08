@@ -1,8 +1,21 @@
+
+/********************************************
+* Titre: Travail pratique #5 - Usager.h
+* Date: 9 mars 2018
+* Auteur: Loic LeBlanc et Daniel Nahum
+* 
+* Cette classe represente les divers Usagers du
+* site, soit les Clients et les Fournisseurs.
+* 
+*******************************************/
+
+
 #ifndef USAGER_H
 #define USAGER_H
 
 #include "Produit.h"
 #include <string>
+
 
 using namespace std;
 

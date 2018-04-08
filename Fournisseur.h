@@ -1,3 +1,15 @@
+/********************************************
+* Titre: Travail pratique #5 - Fournisseur.h
+* Date: 9 mars 2018
+* Auteur: Loic LeBlanc et Daniel Nahum
+* 
+* Les Fournisseurs sont des Usagers pouvant ajouter et enlever
+* des produits à leur catalogue de produits.
+* 
+*******************************************/
+
+
+
 #ifndef FOURNISSEUR_H
 #define FOURNISSEUR_H
 

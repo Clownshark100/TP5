@@ -2,6 +2,12 @@
 * Titre: Travail pratique #5 - GestionnaireUsagers.h
 * Date: 9 mars 2018
 * Auteur: Ryan Hardie
+* 
+* Le gestionnaire d'Usagers est une implémentation
+* du gestionnaire générique pour le cas de nos Produits.
+* Il implémente le conteneur comme un set et définit
+* les foncteurs d'ajout et de suppression appropriés.
+* 
 *******************************************/
 
 #pragma once

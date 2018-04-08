@@ -2,6 +2,12 @@
 * Titre: Travail pratique #5 - GestionnaireGenerique.h
 * Date: 9 mars 2018
 * Auteur: Ryan Hardie
+* 
+* Le gestionnaire générique est une implémentation générique
+* d'un Gestionnaire. Il permet d'effectuer une action pour 
+* chaque élément et d'ajouter et retirer génériquement des éléments
+* d'un conteneur de n'importe quel type.
+* 
 *******************************************/
 
 #pragma once

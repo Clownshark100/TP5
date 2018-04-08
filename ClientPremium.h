@@ -1,3 +1,14 @@
+
+/********************************************
+* Titre: Travail pratique #5 - ClientPremium.h
+* Date: 9 mars 2018
+* Auteur: Loic LeBlanc et Daniel Nahum
+* 
+* Les clients premiums sont des clients bénéficiants de
+* prix spéciaux et d'une période d'adhérance au programme premium.
+* 
+*******************************************/
+
 #ifndef CLIENT_PREMIUM_H
 #define CLIENT_PREMIUM_H
 

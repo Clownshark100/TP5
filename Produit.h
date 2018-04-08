@@ -1,3 +1,13 @@
+/********************************************
+* Titre: Travail pratique #5 - Produit.h
+* Date: 9 mars 2018
+* Auteur: Loic LeBlanc et Daniel Nahum
+* 
+* La classe Produit représente les produits du site web.
+* Ils ont un nom, une référence, un fournisseur et un prix.
+* 
+*******************************************/
+
 #ifndef PRODUIT_H
 #define PRODUIT_H
 

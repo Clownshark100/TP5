@@ -2,6 +2,10 @@
 * Titre: Travail pratique #5 - Foncteur.h
 * Date: 9 mars 2018
 * Auteur: Ryan Hardie
+* 
+* Les foncteurs permettent plusieurs actions
+* génériquesé.
+* 
 *******************************************/
 
 #pragma once
