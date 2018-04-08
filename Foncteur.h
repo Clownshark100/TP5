@@ -110,7 +110,8 @@ public:
 	SupprimerUsager(set<Usager*>& set) :set_(set) {};
 	set<Usager*>& operator()(Usager* usager) {
 		auto it = find_if(set_.begin(), set_.end(), [usager](Usager* usagerSet) {return usagerSet == usager; });
-		set_.erase(*it);
+		if(it != set_.end())
+			set_.erase(*it);
 		return set_;
 	};
 private:

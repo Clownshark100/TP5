@@ -14,7 +14,7 @@ class Fournisseur : public Usager
   public:
     Fournisseur();
     Fournisseur(const string &nom, const string &prenom, int identifiant, const string &codePostal);
-
+	~Fournisseur();
 	// TODO : Modifier l'implémentation de ses méthodes : ----
     GestionnaireProduits* obtenirCatalogue() const;
     void afficherCatalogue() const;
